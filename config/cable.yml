@@ -1,0 +1,13 @@
+development:
+  adapter: redis
+  url: <%= Rails.application.secrets.redis_url %>
+
+test:
+  adapter: test
+
+production:
+  adapter: redis
+  url: <%= Rails.application.secrets.redis_url %>
+  channel_prefix: granite_production
+  ssl_params:
+    verify_mode: <%= OpenSSL::SSL::VERIFY_NONE %>

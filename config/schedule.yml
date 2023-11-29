@@ -1,0 +1,23 @@
+development:
+  todo_notifications_worker:
+    cron: "* * * * *"
+    class: "TodoNotificationsWorker"
+    queue: "default"
+
+default: &default
+  data_seeder_worker:
+    cron: "* * * * *"
+    class: "DataSeederWorker"
+    queue: "default"
+
+staging:
+  <<: *default
+
+heroku:
+  <<: *default
+
+production:
+  data_seeder_worker:
+    cron: "0 0 * * *"
+    class: "DataSeederWorker"
+    queue: "default"

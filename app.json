@@ -1,0 +1,36 @@
+{
+  "name": "granite",
+  "scripts": {},
+  "stack": "heroku-20",
+  "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "LOG_LEVEL": {
+      "value": "DEBUG"
+    }
+  },
+  "formation": {},
+  "addons": [
+    {
+      "plan": "neetodeploy-postgresql:basic",
+      "options": {
+        "version": "13"
+      }
+    },
+    {
+      "plan": "neetodeploy-redis:basic",
+      "options": {
+        "version": "6"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
