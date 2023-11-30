@@ -27,6 +27,7 @@ const Tooltip = ({ direction, content, delay, children, className = "" }) => {
       {children}
       {active && (
         <div
+          data-testid="tooltip-container"
           className={classnames(
             [className],
             `tooltip-tip ${direction || "top"}`

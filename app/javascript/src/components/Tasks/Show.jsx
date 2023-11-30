@@ -84,11 +84,17 @@ const Show = () => {
           />
         </div>
       </div>
-      <h2 className="text-md mb-3 pb-3 leading-5 text-bb-gray-600 text-opacity-50">
+      <h2
+        className="text-md mb-3 pb-3 leading-5 text-bb-gray-600 text-opacity-50"
+        data-testid="task-assignee-label"
+      >
         <span>Assigned To : </span>
         {task?.assigned_user?.name}
       </h2>
-      <h2 className="text-md mb-3 pb-3 leading-5 text-bb-gray-600 text-opacity-50">
+      <h2
+        className="text-md mb-3 pb-3 leading-5 text-bb-gray-600 text-opacity-50"
+        data-testid="task-creator-label"
+      >
         <span>Created By : </span>
         {task?.task_owner?.name}
       </h2>

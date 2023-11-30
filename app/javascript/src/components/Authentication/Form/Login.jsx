@@ -14,6 +14,7 @@ const Login = ({ handleSubmit, setEmail, setPassword, loading }) => (
       <div className="text-center">
         <Link
           className="focus:outline-none mt-2 text-sm font-medium text-bb-purple transition duration-150 ease-in-out focus:underline"
+          data-testid="login-register-link"
           to="/signup"
         >
           Or Register Now
@@ -21,18 +22,25 @@ const Login = ({ handleSubmit, setEmail, setPassword, loading }) => (
       </div>
       <form className="mt-8" onSubmit={handleSubmit}>
         <Input
+          dataTestId="login-email-field"
           label="Email"
           placeholder="oliver@example.com"
           type="email"
           onChange={e => setEmail(e.target.value)}
         />
         <Input
+          dataTestId="login-password-field"
           label="Password"
           placeholder="********"
           type="password"
           onChange={e => setPassword(e.target.value)}
         />
-        <Button buttonText="Sign In" loading={loading} type="submit" />
+        <Button
+          buttonText="Sign In"
+          dataTestId="login-submit-button"
+          loading={loading}
+          type="submit"
+        />
       </form>
     </div>
   </div>

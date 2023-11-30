@@ -50,6 +50,7 @@ const Form = ({
       >
         <input
           checked={shouldReceiveEmail}
+          data-testid="email-preferences-receive-email-checkbox"
           id="shouldReceiveEmail"
           type="checkbox"
           onChange={handleEmailNotificationChange}
@@ -69,6 +70,7 @@ const Form = ({
           Delivery Time (Hours)
         </p>
         <Input
+          dataTestId="email-preferences-delivery-hour-field"
           disabled={!shouldReceiveEmail}
           max={23}
           min={0}

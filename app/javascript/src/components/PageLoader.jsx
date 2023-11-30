@@ -4,6 +4,7 @@ import classnames from "classnames";
 
 const PageLoader = ({ className = "" }) => (
   <div
+    data-testid="page-loader"
     className={classnames(
       [className],
       "flex h-screen w-screen flex-row items-center justify-center"

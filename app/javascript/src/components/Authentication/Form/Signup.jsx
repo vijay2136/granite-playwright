@@ -21,6 +21,7 @@ const Signup = ({
       <div className="text-center">
         <Link
           className="focus:outline-none mt-2 text-center text-sm font-medium text-bb-purple transition duration-150 ease-in-out focus:underline"
+          data-testid="signup-login-link"
           to="/"
         >
           Or Login Now
@@ -28,29 +29,38 @@ const Signup = ({
       </div>
       <form className="mt-8" onSubmit={handleSubmit}>
         <Input
+          dataTestId="signup-name-field"
           label="Name"
           placeholder="Oliver"
           onChange={e => setName(e.target.value)}
         />
         <Input
+          dataTestId="signup-email-field"
           label="Email"
           placeholder="oliver@example.com"
           type="email"
           onChange={e => setEmail(e.target.value)}
         />
         <Input
+          dataTestId="signup-password-field"
           label="Password"
           placeholder="********"
           type="password"
           onChange={e => setPassword(e.target.value)}
         />
         <Input
+          dataTestId="signup-password-confirmation-field"
           label="Password Confirmation"
           placeholder="********"
           type="password"
           onChange={e => setPasswordConfirmation(e.target.value)}
         />
-        <Button buttonText="Register" loading={loading} type="submit" />
+        <Button
+          buttonText="Register"
+          dataTestId="signup-submit-button"
+          loading={loading}
+          type="submit"
+        />
       </form>
     </div>
   </div>

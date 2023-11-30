@@ -17,13 +17,19 @@ const Comments = ({
         </label>
         <textarea
           className="block w-full flex-1 resize-none rounded-md border border-bb-border p-2 text-bb-gray-600 shadow-sm focus:border-bb-purple focus:ring-bb-purple sm:text-sm"
+          data-testid="comments-text-field"
           placeholder="Ask a question or post an update"
           rows={3}
           value={newComment}
           onChange={e => setNewComment(e.target.value)}
         />
       </div>
-      <Button buttonText="Comment" loading={loading} type="submit" />
+      <Button
+        buttonText="Comment"
+        dataTestId="comments-submit-button"
+        loading={loading}
+        type="submit"
+      />
     </form>
     {comments?.map((comment, index) => (
       <div

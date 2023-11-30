@@ -8,6 +8,7 @@ const ProgressBar = ({ progress }) => (
     <motion.div
       animate={{ width: `${progress}%` }}
       className="text-2xs flex h-5 animate-pulse items-center justify-center rounded-full bg-indigo-300 font-medium leading-none"
+      data-testid="progress-bar"
       initial={{ width: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >

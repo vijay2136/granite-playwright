@@ -24,6 +24,7 @@ const Form = ({
   return (
     <form className="mx-auto max-w-lg" onSubmit={handleSubmit}>
       <Input
+        dataTestId="form-title-field"
         label="Title"
         placeholder="Todo Title (Max 50 Characters Allowed)"
         value={title}
@@ -36,6 +37,7 @@ const Form = ({
         <div className="w-full">
           <Select
             isSearchable
+            data-testid="form-assignee-select-option"
             defaultValue={defaultOption}
             options={userOptions}
             onChange={e => setUserId(e.value)}
@@ -44,6 +46,7 @@ const Form = ({
       </div>
       <Button
         buttonText={type === "create" ? "Add Task" : "Update Task"}
+        dataTestId="form-submit-button"
         loading={loading}
         type="submit"
       />

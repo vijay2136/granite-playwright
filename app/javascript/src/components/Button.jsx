@@ -3,12 +3,15 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
+import { convertToKebabCase } from "utils/convertToKebabCase";
+
 const noop = () => {};
 
 const Button = ({
   type = "button",
   buttonText,
   onClick = noop,
+  dataTestId,
   loading,
   className = "",
 }) => {
@@ -21,6 +24,7 @@ const Button = ({
   return (
     <div className="mt-6">
       <button
+        data-testid={dataTestId ?? `${convertToKebabCase(buttonText)}-button`}
         disabled={loading}
         type={type}
         className={classnames(

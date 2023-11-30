@@ -3,12 +3,15 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
+import { convertToKebabCase } from "utils/convertToKebabCase";
+
 const Input = ({
   type = "text",
   label,
   value,
   onChange,
   placeholder,
+  dataTestId,
   disabled = false,
   min,
   max,
@@ -23,6 +26,7 @@ const Input = ({
     )}
     <div className="mt-1 rounded-md shadow-sm">
       <input
+        data-testid={dataTestId ?? `${convertToKebabCase(label)}-input-field`}
         disabled={disabled}
         max={max}
         min={min}

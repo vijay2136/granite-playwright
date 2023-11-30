@@ -63,6 +63,7 @@ const DownloadReport = () => {
         <ProgressBar progress={progress} />
         <Button
           buttonText="Download"
+          dataTestId="report-pdf-download-button"
           loading={isLoading}
           onClick={downloadPdf}
         />
