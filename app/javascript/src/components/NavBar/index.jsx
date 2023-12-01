@@ -54,7 +54,9 @@ const NavBar = () => {
              duration-150 ease-in-out
               focus:text-bb-gray-700"
             >
-              <Link to="/my/preferences">Preferences </Link>
+              <Link data-testid="navbar-preferences-link" to="/my/preferences">
+                Preferences
+              </Link>
             </span>
             <span
               className="font-regular focus:outline-none inline-flex items-center border-b-2
@@ -62,10 +64,12 @@ const NavBar = () => {
              leading-5 text-bb-gray-600 text-opacity-50 transition
              duration-150 ease-in-out
               focus:text-bb-gray-700"
+              data-testid="navbar-username-label"
             >
               {userName}
             </span>
             <a
+              data-testid="navbar-logout-link"
               className="focus:outline-none inline-flex cursor-pointer items-center border-b-2
              border-transparent px-1 pt-1 text-sm
              font-semibold leading-5 text-bb-gray-600 text-opacity-50
