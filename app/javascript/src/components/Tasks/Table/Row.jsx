@@ -57,6 +57,7 @@ const Row = ({
               </td>
               <td className="cursor-pointer py-4 pl-6 text-center">
                 <i
+                  data-testid="pending-task-star-or-unstar-link"
                   className={classnames(
                     "p-1 text-2xl transition duration-300 ease-in-out hover:text-bb-yellow",
                     {
@@ -79,6 +80,7 @@ const Row = ({
               <td className="cursor-pointer py-4 pl-6 text-center">
                 <i
                   className="ri-delete-bin-5-line text-center text-2xl text-bb-border transition duration-300 ease-in-out hover:text-bb-red"
+                  data-testid="completed-task-delete-link"
                   onClick={() => destroyTask(rowData.slug)}
                 />
               </td>
