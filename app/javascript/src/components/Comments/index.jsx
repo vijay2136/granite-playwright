@@ -34,12 +34,20 @@ const Comments = ({
     {comments?.map((comment, index) => (
       <div
         className="text-md my-2 flex justify-between rounded border border-bb-border px-8 py-3 leading-5"
+        data-testid="task-comment"
         key={comment.id}
       >
-        <p className="text-bb-gray-600" key={index}>
+        <p
+          className="text-bb-gray-600"
+          data-testid="task-comment-content"
+          key={index}
+        >
           {comment.content}
         </p>
-        <p className="text-bb-gray-600 text-opacity-50">
+        <p
+          className="text-bb-gray-600 text-opacity-50"
+          data-testid="task-comment-creation-date"
+        >
           {new Date(comment.created_at).toLocaleString()}
         </p>
       </div>
