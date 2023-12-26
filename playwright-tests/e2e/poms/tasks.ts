@@ -1,5 +1,20 @@
 import { Page, expect } from "@playwright/test";
 
+interface TaskName {
+  taskName: string;
+}
+interface CreateNewTaskProps extends TaskName {
+  userName?: string;
+}
+
+interface CreateNewCommentProps extends TaskName {
+  comment: string;
+}
+
+interface VerifyCommentCountProps extends TaskName {
+  count: number;
+}
+
 export default class TasksPage {
   page: Page;
 
@@ -26,11 +41,18 @@ export default class TasksPage {
     await expect(taskInDashboard).toBeVisible();
   };
 
+  deleteTaskAndVerify = async ({ taskName }: TaskName) => {
+    await this.page.getByTestId("task-delete-button").click();
+    await expect(
+      this.page
+        .getByTestId("tasks-pending-table")
+        .getByRole("row", { name: taskName })
+    ).toBeHidden();
+  };
+
   markTaskAsCompletedAndVerify = async ({
     taskName,
-  }: {
-    taskName: string;
-  }): Promise<void> => {
+  }: TaskName): Promise<void> => {
     await this.page
       .getByTestId("tasks-pending-table")
       .getByRole("row", { name: taskName })
@@ -43,7 +65,7 @@ export default class TasksPage {
     await expect(completedTaskInDashboard).toBeVisible();
   };
 
-  starTaskAndVerify = async ({ taskName }: { taskName: string }) => {
+  starTaskAndVerify = async ({ taskName }: TaskName) => {
     const starIcon = this.page
       .getByTestId("tasks-pending-table")
       .getByRole("row", { name: taskName })
@@ -53,5 +75,38 @@ export default class TasksPage {
     await expect(
       this.page.getByTestId("tasks-pending-table").getByRole("row").nth(1)
     ).toContainText(taskName);
+  };
+
+  createAndVerifyComment = async ({
+    comment,
+    taskName,
+  }: CreateNewCommentProps) => {
+    await this.page.getByTestId("comments-text-field").fill(comment);
+    await this.page.getByTestId("comments-submit-button").click();
+    await expect(this.page.getByTestId("task-comment-content")).toContainText(
+      comment
+    );
+  };
+
+  verifyCommentContent = async ({
+    taskName,
+    comment,
+  }: CreateNewCommentProps) => {
+    await this.page
+      .getByTestId("tasks-pending-table")
+      .getByText(taskName)
+      .click();
+    await expect(this.page.getByTestId("task-comment-content")).toContainText(
+      comment
+    );
+  };
+
+  verifyCommentCount = async ({ taskName, count }: VerifyCommentCountProps) => {
+    await expect(
+      this.page
+        .getByTestId("tasks-pending-table")
+        .getByRole("row", { name: taskName })
+        .getByRole("cell", { name: count })
+    ).toBeVisible();
   };
 }
